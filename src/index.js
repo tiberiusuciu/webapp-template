@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/index.css';
+import { Provider } from 'react-redux';
 
-const Index = () => {
-    return (
-        <div>
-            <h1>Hello World!</h1>
-            <div className={styles.testing}>This is a test</div>
-        </div>
-    );
-};
+import App from './containers/App';
 
-ReactDOM.render(<Index />, document.getElementById("index"));
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById("root")
+);
